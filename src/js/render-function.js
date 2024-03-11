@@ -1,6 +1,6 @@
 
-import {list} from "../main"
 
+export const list = document.querySelector(".gallery")
 
 export function createMarkup(arr){
     return arr.map(el => `<li class="gallery-item">
@@ -16,6 +16,9 @@ export function createMarkup(arr){
   </li>`).join(' ')
   }
 
+  
+
   export function rendering(arr){
-    return list.innerHTML = createMarkup(arr) 
+    list.insertAdjacentHTML("beforeend", createMarkup(arr)) 
+    
   }
