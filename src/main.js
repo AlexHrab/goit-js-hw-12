@@ -70,11 +70,11 @@ hideBtn();
       iziToast.warning({
         message: 'Ups, something wrong bad. Please try again!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
     })  
-     } 
+     }
+     finally{hideLoader()} 
 }else{iziToast.warning({
   message: 'Please enter the name of the picture!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1, transitionIn: "flipInX"
 })}
-hideLoader();
 }
 
 async function forPgBtn(e){
@@ -93,7 +93,7 @@ catch(eror){
   iziToast.warning({
     message: 'Ups, something wrong bad. Please try again!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
 })}  
-     hideLoader();   
+finally{hideLoader()}  
 }
 
 form.addEventListener("submit", forListener);
