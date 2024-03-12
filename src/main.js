@@ -36,6 +36,15 @@ function showLoader() {
         PgBtn.classList.add("is-hidden");
         }
 
+        function theEnd(length, page){
+          if(length < page){
+            iziToast.warning({
+              message: 'We are sorry, but youve reached the end of search results.!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
+            }); 
+            hideBtn();
+        }
+        }
+
 async function forListener(e){
   e.preventDefault();
   page = 1;
@@ -49,13 +58,8 @@ async function forListener(e){
     rendering(result.data.hits);
     modal.refresh();
     showBtn();
-    if(result.data.hits.length < perPage) 
-    {
-     iziToast.warning({
-       message: 'We are sorry, but youve reached the end of search results.!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
-     }) 
-     hideBtn();
- }}else{
+    theEnd(result.data.hits.length, perPage)
+  }else{
   iziToast.warning({
     message: 'Sorry, there are no images matching your search query. Please try again!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
 })
@@ -84,12 +88,7 @@ async function forPgBtn(e){
     modal.refresh();
     const item = document.querySelector(".gallery-item");
 scrollOn(item);
-   if(result.data.hits.length < perPage){
-    iziToast.warning({
-      message: 'We are sorry, but youve reached the end of search results.!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
-    }); 
-    hideBtn();
-}}
+theEnd(result.data.hits.length, perPage)}
 catch(eror){
   iziToast.warning({
     message: 'Ups, something wrong bad. Please try again!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1
