@@ -74,7 +74,9 @@ hideBtn();
      finally{hideLoader()} 
 }else{iziToast.warning({
   message: 'Please enter the name of the picture!', position: "center", close: false, closeOnClick: true, progressBar: false, messageSize: 30, timeout: false, displayMode: 1, transitionIn: "flipInX"
-})}
+})
+hideLoader()
+}
 }
 
 async function forPgBtn(e){
